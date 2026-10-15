@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="JadwalKu membantu mengatur jadwal pelajaran mingguan dengan mudah.">
+  <title>JadwalKu – Student Schedule Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 11h18"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1a1.7 1.7 0 0 1-2.4 2.4l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a1.7 1.7 0 0 1-3.4 0v-.2a1.7 1.7 0 0 0-2.9-1.2l-.1.1a1.7 1.7 0 1 1-2.4-2.4l.1-.1a1.7 1.7 0 0 0-1.2-2.9H4a1.7 1.7 0 0 1 0-3.4h.2a1.7 1.7 0 0 0 1.2-2.9l-.1-.1a1.7 1.7 0 0 1 2.4-2.4l.1.1a1.7 1.7 0 0 0 2.9-1.2V2a1.7 1.7 0 0 1 3.4 0v.2a1.7 1.7 0 0 0 2.9 1.2l.1-.1a1.7 1.7 0 0 1 2.4 2.4l-.1.1a1.7 1.7 0 0 0 1.2 2.9h.2a1.7 1.7 0 0 1 0 3.4h-.2a1.7 1.7 0 0 0-1.2 2.9Z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.5 8.5 0 1 0 20.9 13Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-book-open" viewBox="0 0 24 24"><path d="M12 7v14m0-14C9.5 4.7 6 4 3 4v14c3 0 6.5.7 9 3m0-14c2.5-2.3 6-3 9-3v14c-3 0-6.5.7-9 3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m16 4 4 4L8 20H4v-4L16 4Z"/><path d="m14 6 4 4"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18m-2 0-.9 14H5.9L5 6m4 0V4h6v2m-5 4v6m4-6v6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m18 6-12 12M6 6l12 12"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-2-5.8L4 11l6-2.2L12 3Zm7 12 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="JadwalKu, ke dashboard">
+        <span class="brand-mark"><svg class="icon"><use href="#i-calendar"/></svg></span>
+        <span class="brand-name">Jadwal<span>Ku</span><small>STUDENT PLANNER</small></span>
+      </a>
+
+      <div class="nav-caption">MENU UTAMA</div>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <button class="nav-link active" type="button" data-page="dashboard"><svg class="icon"><use href="#i-grid"/></svg><span>Dashboard</span></button>
+        <button class="nav-link" type="button" data-page="schedule"><svg class="icon"><use href="#i-book"/></svg><span>Jadwal Pelajaran</span></button>
+        <button class="nav-link" type="button" data-page="settings"><svg class="icon"><use href="#i-settings"/></svg><span>Pengaturan</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-tip">
+          <span class="tip-icon"><svg class="icon"><use href="#i-sparkles"/></svg></span>
+          <strong>Belajar lebih teratur</strong>
+          <p>Rencanakan harimu, raih lebih banyak.</p>
+        </div>
+        <div class="profile-card">
+          <div class="avatar">S</div>
+          <div><strong>Student</strong><span>Semangat belajar!</span></div>
+          <span class="online-dot" aria-label="Aktif"></span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menu-toggle" type="button" aria-label="Buka menu"><svg class="icon"><use href="#i-menu"/></svg></button>
+        <div class="breadcrumb"><span>Ruang belajar</span><svg class="icon"><use href="#i-chevron-right"/></svg><strong id="breadcrumb-current">Dashboard</strong></div>
+        <div class="topbar-actions">
+          <div class="today-pill"><span class="today-dot"></span><span id="header-date"></span></div>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Aktifkan mode gelap" title="Ganti tema"><svg class="icon"><use href="#i-moon"/></svg></button>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <section class="page-section active" id="page-dashboard">
+          <div class="welcome-row">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-line"></span> DASHBOARD SISWA</div>
+              <h1>Selamat datang di <span>JadwalKu</span> <span class="wave">✦</span></h1>
+              <p class="page-subtitle">Semua rencana belajarmu, tersusun rapi dalam satu tempat.</p>
+            </div>
+            <div class="welcome-date"><div class="date-icon"><svg class="icon"><use href="#i-calendar"/></svg></div><div><span>Hari ini</span><strong id="welcome-date"></strong></div></div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card stat-blue">
+              <div class="stat-top"><span class="stat-icon"><svg class="icon"><use href="#i-book-open"/></svg></span><span class="stat-label">HARI INI</span></div>
+              <div class="stat-value" id="today-count">0 <small>mapel</small></div>
+              <p class="stat-caption">Mata pelajaran terjadwal</p>
+              <span class="stat-decoration decor-book">✳</span>
+            </article>
+            <article class="stat-card stat-purple">
+              <div class="stat-top"><span class="stat-icon"><svg class="icon"><use href="#i-sparkles"/></svg></span><span class="stat-label">BERIKUTNYA</span></div>
+              <div class="stat-value stat-next" id="next-class">Belum ada jadwal</div>
+              <p class="stat-caption" id="next-class-time">Nikmati waktu luangmu!</p>
+              <span class="stat-decoration decor-spark">✧</span>
+            </article>
+            <article class="stat-card stat-green">
+              <div class="stat-top"><span class="stat-icon"><svg class="icon"><use href="#i-clock"/></svg></span><span class="stat-label">JAM BELAJAR</span></div>
+              <div class="stat-value stat-hours" id="study-hours">—</div>
+              <p class="stat-caption" id="study-hours-caption">Belum ada jadwal hari ini</p>
+              <span class="stat-decoration decor-clock">◷</span>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel today-panel">
+              <div class="panel-heading">
+                <div><div class="section-kicker">JADWAL HARIAN</div><h2>Jadwal Hari Ini</h2></div>
+                <span class="day-badge" id="today-day-label"></span>
+              </div>
+              <div class="today-list" id="today-list"></div>
+              <button class="text-link" type="button" data-go-page="schedule">Lihat jadwal lengkap <svg class="icon"><use href="#i-arrow"/></svg></button>
+            </section>
+            <section class="panel week-panel">
+              <div class="panel-heading">
+                <div><div class="section-kicker">RINGKASAN</div><h2>Jadwal Minggu Ini</h2></div>
+                <button class="mini-link" type="button" data-go-page="schedule">Lihat semua <svg class="icon"><use href="#i-arrow"/></svg></button>
+              </div>
+              <div class="week-overview" id="week-overview"></div>
+              <div class="week-legend"><span><i class="legend-dot"></i> Ada jadwal</span><span><i class="legend-dot legend-today"></i> Hari ini</span></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="page-section" id="page-schedule" hidden>
+          <div class="page-heading-row">
+            <div><div class="eyebrow"><span class="eyebrow-line"></span> RENCANA BELAJAR</div><h1>Jadwal Pelajaran</h1><p class="page-subtitle">Atur dan pantau semua pelajaranmu dalam seminggu.</p></div>
+            <button class="primary-button" id="add-schedule" type="button"><svg class="icon"><use href="#i-plus"/></svg>Tambah Jadwal</button>
+          </div>
+          <section class="panel schedule-panel">
+            <div class="schedule-toolbar">
+              <div class="schedule-tabs" id="day-tabs" aria-label="Filter jadwal berdasarkan hari"></div>
+              <div class="schedule-tools">
+                <label class="search-box"><svg class="icon"><use href="#i-search"/></svg><input id="schedule-search" type="search" placeholder="Cari mata pelajaran..." aria-label="Cari jadwal"></label>
+                <div class="day-navigation" aria-label="Navigasi hari">
+                  <button class="icon-button" id="previous-day" type="button" aria-label="Hari sebelumnya"><svg class="icon"><use href="#i-chevron-left"/></svg></button>
+                  <button class="icon-button" id="next-day" type="button" aria-label="Hari berikutnya"><svg class="icon"><use href="#i-chevron-right"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="schedule-view-label" id="schedule-view-label"></div>
+            <div class="table-wrap" id="schedule-table-wrap"></div>
+            <div class="schedule-empty" id="schedule-empty" hidden><span class="empty-symbol"><svg class="icon"><use href="#i-search"/></svg></span><strong>Jadwal tidak ditemukan</strong><span>Coba ubah kata kunci atau pilih hari lainnya.</span></div>
+            <div class="schedule-footer"><span id="schedule-count"></span><span>Jadwal tersimpan otomatis <i class="saved-dot"></i></span></div>
+          </section>
+        </section>
+
+        <section class="page-section" id="page-settings" hidden>
+          <div class="eyebrow"><span class="eyebrow-line"></span> PREFERENSI</div>
+          <h1>Pengaturan</h1>
+          <p class="page-subtitle settings-intro">Sesuaikan JadwalKu dengan kebutuhan belajarmu.</p>
+          <section class="panel settings-panel">
+            <div class="settings-item">
+              <div class="settings-item-icon"><svg class="icon"><use href="#i-moon"/></svg></div>
+              <div class="settings-copy"><strong>Tampilan tema</strong><span>Pilih tampilan yang nyaman untukmu.</span></div>
+              <button class="secondary-button" id="settings-theme-toggle" type="button">Mode terang</button>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-icon settings-blue-icon"><svg class="icon"><use href="#i-calendar"/></svg></div>
+              <div class="settings-copy"><strong>Kembalikan jadwal contoh</strong><span>Ganti semua jadwal saat ini dengan jadwal contoh awal.</span></div>
+              <button class="secondary-button" id="reset-schedule" type="button">Pulihkan jadwal</button>
+            </div>
+            <div class="settings-note"><svg class="icon"><use href="#i-check"/></svg><span>Jadwal dan preferensi tema disimpan otomatis di browser ini. Data tidak dikirim ke server.</span></div>
+          </section>
+          <div class="settings-credit">JadwalKu <span>·</span> Student Schedule Management</div>
+        </section>
+      </main>
+      <footer class="app-footer"><span>© <span id="current-year"></span> JadwalKu</span><span>Temani perjalanan belajarmu <i>✦</i></span></footer>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="schedule-modal" hidden>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-heading">
+        <div><span class="section-kicker">DETAIL PELAJARAN</span><h2 id="modal-title">Tambah Jadwal</h2></div>
+        <button class="icon-button" id="close-modal" type="button" aria-label="Tutup form"><svg class="icon"><use href="#i-close"/></svg></button>
+      </div>
+      <form id="schedule-form">
+        <input id="schedule-id" type="hidden">
+        <label class="form-field">Nama mata pelajaran <span>*</span><input id="subject" name="subject" type="text" maxlength="60" placeholder="Contoh: Matematika" required></label>
+        <label class="form-field">Nama guru <span>*</span><input id="teacher" name="teacher" type="text" maxlength="60" placeholder="Contoh: Pak Budi" required></label>
+        <label class="form-field">Hari <span>*</span><select id="day" name="day" required></select></label>
+        <div class="form-row">
+          <label class="form-field">Jam mulai <span>*</span><input id="start-time" name="start" type="time" required></label>
+          <label class="form-field">Jam selesai <span>*</span><input id="end-time" name="end" type="time" required></label>
+        </div>
+        <label class="form-field">Ruangan <small>(opsional)</small><input id="room" name="room" type="text" maxlength="60" placeholder="Contoh: Ruang XI TKJ"></label>
+        <div class="form-error" id="form-error" role="alert" hidden></div>
+        <div class="modal-actions"><button class="secondary-button" id="cancel-modal" type="button">Batal</button><button class="primary-button" type="submit"><svg class="icon"><use href="#i-check"/></svg>Simpan Jadwal</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
